@@ -13,25 +13,22 @@ public class aulaTest {
 
         WebDriver driver = new ChromeDriver();
 
-        try {
-            //Dado: que esteja na página saucedemo.com
-            driver.get("https://www.saucedemo.com/");
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
-            assertEquals("Swag Labs", driver.getTitle());
+        //Dado: que esteja na página saucedemo.com
+        driver.get("https://www.saucedemo.com/");
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        assertEquals("Swag Labs", driver.getTitle());
 
-            //Quando: Inserido dados de usuário e senha válidos
-            driver.findElement(By.id("user-name")).sendKeys("standard_user");
-            driver.findElement(By.id("password")).sendKeys("secret_sauce");
-            driver.findElement(By.id("login-button")).click();
+        //Quando: Inserido dados de usuário e senha válidos
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
 
-            //Então: deverá ser redirecionado para a página de inventário
-            assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
-            assertTrue(driver.findElement(By.id("shopping_cart_container")).isDisplayed());
-            assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed());
+        //Então: deverá ser redirecionado para a página de inventário
+        assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
+        assertTrue(driver.findElement(By.id("shopping_cart_container")).isDisplayed());
+        assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed());
 
-        } finally {
-            driver.quit();
-        }
+        driver.quit();
     }
 
     @Test(expected = AssertionError.class)
@@ -40,28 +37,25 @@ public class aulaTest {
 
         WebDriver driver = new ChromeDriver();
 
-        try {
-            //Dado: que esteja na página saucedemo.com
-            driver.get("https://www.saucedemo.com/");
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Dado: que esteja na página saucedemo.com
+        driver.get("https://www.saucedemo.com/");
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            //Quando: Inserido usuário inválido e senha válida
-            driver.findElement(By.id("user-name")).sendKeys("usuario_inexistente");
-            driver.findElement(By.id("password")).sendKeys("secret_sauce");
-            driver.findElement(By.id("login-button")).click();
+        //Quando: Inserido usuário inválido e senha válida
+        driver.findElement(By.id("user-name")).sendKeys("usuario_inexistente");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
 
-            //Então: deve exibir mensagem de erro e permanecer na página de login
-            WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
-            assertTrue(errorMessage.isDisplayed());
-            assertTrue(errorMessage.getText().contains("Username and password do not match"));
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Então: deve exibir mensagem de erro e permanecer na página de login
+        WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
+        assertTrue(errorMessage.isDisplayed());
+        assertTrue(errorMessage.getText().contains("Username and password do not match"));
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            // Força uma falha para demonstrar o cenário de exceção
-            fail("Login deveria ter falhado com usuário inválido");
+        // Força uma falha para demonstrar o cenário de exceção
+        fail("Login deveria ter falhado com usuário inválido");
 
-        } finally {
-            driver.quit();
-        }
+        driver.quit();
     }
 
     @Test(expected = AssertionError.class)
@@ -70,28 +64,25 @@ public class aulaTest {
 
         WebDriver driver = new ChromeDriver();
 
-        try {
-            //Dado: que esteja na página saucedemo.com
-            driver.get("https://www.saucedemo.com/");
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Dado: que esteja na página saucedemo.com
+        driver.get("https://www.saucedemo.com/");
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            //Quando: Inserido usuário válido e senha incorreta
-            driver.findElement(By.id("user-name")).sendKeys("standard_user");
-            driver.findElement(By.id("password")).sendKeys("senha_incorreta");
-            driver.findElement(By.id("login-button")).click();
+        //Quando: Inserido usuário válido e senha incorreta
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("senha_incorreta");
+        driver.findElement(By.id("login-button")).click();
 
-            //Então: deve exibir mensagem de erro e permanecer na página de login
-            WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
-            assertTrue(errorMessage.isDisplayed());
-            assertTrue(errorMessage.getText().contains("Username and password do not match"));
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Então: deve exibir mensagem de erro e permanecer na página de login
+        WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
+        assertTrue(errorMessage.isDisplayed());
+        assertTrue(errorMessage.getText().contains("Username and password do not match"));
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            // Força uma falha para demonstrar o cenário de exceção
-            fail("Login deveria ter falhado com senha incorreta");
+        // Força uma falha para demonstrar o cenário de exceção
+        fail("Login deveria ter falhado com senha incorreta");
 
-        } finally {
-            driver.quit();
-        }
+        driver.quit();
     }
 
     @Test(expected = AssertionError.class)
@@ -100,26 +91,23 @@ public class aulaTest {
 
         WebDriver driver = new ChromeDriver();
 
-        try {
-            //Dado: que esteja na página saucedemo.com
-            driver.get("https://www.saucedemo.com/");
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Dado: que esteja na página saucedemo.com
+        driver.get("https://www.saucedemo.com/");
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            //Quando: Tentar fazer login sem preencher os campos
-            driver.findElement(By.id("login-button")).click();
+        //Quando: Tentar fazer login sem preencher os campos
+        driver.findElement(By.id("login-button")).click();
 
-            //Então: deve exibir mensagem de erro solicitando preenchimento dos campos
-            WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
-            assertTrue(errorMessage.isDisplayed());
-            assertTrue(errorMessage.getText().contains("Username is required"));
-            assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
+        //Então: deve exibir mensagem de erro solicitando preenchimento dos campos
+        WebElement errorMessage = driver.findElement(By.cssSelector("[data-test='error']"));
+        assertTrue(errorMessage.isDisplayed());
+        assertTrue(errorMessage.getText().contains("Username is required"));
+        assertEquals("https://www.saucedemo.com/", driver.getCurrentUrl());
 
-            // Força uma falha para demonstrar o cenário de exceção
-            fail("Login deveria ter falhado com campos vazios");
+        // Força uma falha para demonstrar o cenário de exceção
+        fail("Login deveria ter falhado com campos vazios");
 
-        } finally {
-            driver.quit();
-        }
+        driver.quit();
     }
 
 }
